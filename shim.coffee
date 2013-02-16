@@ -1,4 +1,3 @@
-
 # Require gets overwritten by browserify, so we have to reimplement it from scratch - boo :(
 webpage = core_require('webpage');
 
@@ -49,6 +48,7 @@ pageWrap = (page) -> mkwrap page,
   injectJs: (js, cb=->) -> cb page.injectJs js
   evaluate: (fn, cb=(->), args...) -> cb page.evaluate.apply(page, [fn].concat(args))
   render: (file, cb=->) -> page.render file; cb()
+  renderBase64: (fmt, cb=->) -> cb page.renderBase64 fmt
   setHeaders: (headers, cb=->) -> page.customHeaders = headers; cb()
   setViewportSize: (width, height, cb=->) ->
     page.viewportSize = {width:width, height:height}; cb()
